@@ -5,7 +5,7 @@ export const modelRegistry: Record<string, ModelConfig> = {
   'gemini-flash': {
     id: 'gemini-flash',
     provider: 'google',
-    modelString: 'gemini-2.0-flash',
+    modelString: 'gemini-3-flash-preview',
     tier: 'cheap',
     costPer1kInputTokens: 0.0001,
     costPer1kOutputTokens: 0.0004,

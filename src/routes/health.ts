@@ -9,6 +9,26 @@ const envMap: Record<string, string> = {
   'gpt-4o-mini': 'OPENAI_API_KEY',
 };
 
+const placeholderValues = new Set([
+  'your_key_here',
+  'your-api-key-here',
+  'replace_me',
+  'changeme',
+]);
+
+const hasConfiguredKey = (rawValue: string | undefined): boolean => {
+  if (!rawValue) {
+    return false;
+  }
+
+  const normalized = rawValue.trim().toLowerCase();
+  if (!normalized) {
+    return false;
+  }
+
+  return !placeholderValues.has(normalized);
+};
+
 /** Registers the API health endpoint. */
 export const healthRoutes = new Elysia().get('/api/health', () => ({
   status: 'ok',
@@ -16,7 +36,7 @@ export const healthRoutes = new Elysia().get('/api/health', () => ({
   models: Object.fromEntries(
     Object.keys(modelRegistry).map((modelId) => [
       modelId,
-      process.env[envMap[modelId]] ? 'available' : 'missing_key',
+      hasConfiguredKey(process.env[envMap[modelId]]) ? 'available' : 'missing_key',
     ]),
   ),
   timestamp: new Date().toISOString(),

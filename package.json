@@ -8,13 +8,13 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^1.3.28",
-    "@ai-sdk/google": "^1.2.23",
-    "@ai-sdk/mistral": "^1.2.11",
-    "@ai-sdk/openai": "^1.3.22",
-    "ai": "^4.3.16",
-    "elysia": "^1.1.15",
-    "uuid": "^11.1.0"
+    "@ai-sdk/anthropic": "latest",
+    "@ai-sdk/google": "latest",
+    "@ai-sdk/mistral": "latest",
+    "@ai-sdk/openai": "latest",
+    "ai": "latest",
+    "elysia": "latest",
+    "uuid": "latest"
   },
   "devDependencies": {
     "@types/uuid": "^10.0.0",
